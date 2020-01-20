@@ -1,0 +1,206 @@
+<html>
+    <head>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+        <script src="js/jquery-1.11.0.js"></script>
+    </head>
+    <style>
+        body{
+            background-image: url("jin.jpg");
+            background-size: cover;
+        }
+.header{
+    width:1350px;
+    height: 70px;
+    background-color: brown;
+}
+.btn{
+    background-color:palegreen;
+    border-radius: 30px;
+    font-size: 30px;
+}
+h1{
+    text-align: center;
+}
+.main{
+    text-align: center;
+    margin-top:60px ;
+}
+.login{
+    text-align: center;
+    margin-top: 60px;
+}
+.button{
+    margin-left: 600px;
+    margin-top:30px;
+    
+    color: white;
+}
+.head{
+    height:400px ;
+    width: 600px;
+    background-color:deepskyblue;
+    margin-left:400px ;
+
+}
+.login {
+    display:none;
+
+}
+
+
+</style>
+    <body>
+<div class="header">
+
+    <h1>Hackrank Login</h1>
+</div>
+<div class="button">
+
+    <a href="#"class="btn" id="register" style="text-decoration: none;">SIGN UP</a> 
+    <a href="#" class="btn" id="login" style="text-decoration: none;">LOG IN</a>
+    </div>
+<div class="head">
+
+
+
+    <div class="main">
+    <form class="registration">
+    
+    
+        <i class="fa fa-user-o fa-2x" aria-hidden="true"  ></i>
+        <input type="text" placeholder="User Name" required="required"  class="in"  align="middle" class="form_text" id="form_uname"/>
+         <span class="error_form" id="fname_error_message"></span><br><br>
+         
+           
+         <i class="fa fa-unlock" aria-hidden="true" ></i>
+         <input type="password" placeholder="Password"  required="required"  class="in" class="form_text" id="form_password" style="margin-left: 15px;" /> 
+         <span class="error_form" id="password1_error_message"></span><br><br>
+
+
+         <i class="fa fa-envelope-o fa-2x" aria-hidden="true" ></i>
+         <input type="email" placeholder="Email id" required="required" class="in"  class="form_text" id="form_email">
+         <span class="error_form" id="email_error_message"></span><br><br>
+       <button style="background-color:mediumspringgreen; color: white;">Register</button>
+
+         </form><br><br>
+    </div>
+
+
+
+<div class="login">
+        <form class="log">
+            <i class="fa fa-user-o fa-2x" aria-hidden="true"  ></i>
+            <input type="text" placeholder="User Name" required="required"  class="in"  align="middle" class="form_text" id="form_uname"/>
+             <span class="error_form" id="fname_error_message"></span><br><br>
+             
+               
+             <i class="fa fa-unlock" aria-hidden="true" ></i>
+             <input type="password" placeholder="Password"  required="required"  class="in" class="form_text" id="form_password" style="margin-left: 15px;" /> 
+             <span class="error_form" id="password1_error_message"></span><br><br>
+             <button style="background-color:mediumspringgreen ; color: white;">Login</button><br><br>
+
+
+            </form>
+        </div>
+
+    </div>
+
+</div>
+<script>
+    $(document).ready(function(){
+        $("#register").click(function(){
+            $(".login").show();
+            $(".main").hide();
+            $("#register").addClass('active');
+            $("#login").removeClass('active');
+
+
+        });
+    });
+    $(document).ready(function(){
+        $("#login").click(function(){
+            $(".main").show();
+            $(".login").hide();
+            $("#login").addClass('active');
+            $("#register").removeClass('active');
+
+
+        });
+    });
+    $(function() {
+                        $("#uname_error_message").hide();
+                        $("#password_error_message").hide();
+                         $("#email_error_message").hide();
+                        var error_sname = false;
+                        var error_password = false;
+                        var error_email = false;
+                 
+                        $("#form_uname").focusout(function() {
+                            check_uname();
+                            
+                        });
+
+                       
+                        $("#form_email").focusout(function() {
+                            check_email();
+                            
+                        });
+                        $("#form_password").focusout(function() {
+                            check_password();
+                            
+                        });
+                       
+                    });
+                    function check_uname() {
+                        
+                        var fname_length = $("#form_uname").val().length;
+                        
+                        if(uname_length < 5 || uname_length > 20) {
+                            $("#uname_error_message").html("Should be between 5-20 characters");
+                            $("uname_error_message").show();
+                            error_uname = true;
+                        } 
+                        else {
+                            $("#uname_error_message").hide();
+                        }
+                    
+                    } 
+                    function check_password() {
+                        
+                        var password_length = $("#form_password").val().length;
+                        
+                        if(password_length < 8 || password_length > 20) {
+                            $("#password_error_message").html("Should be 8 characters");
+                            $("#password_error_message").show();
+                            error_password = true;
+                        } 
+                        else {
+                            $("#password_error_message").hide();
+                        }
+                    
+                    } 
+                    function check_email(){
+                            var regax= new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
+                            if(regax.test($("#form_email").val())){
+                                $("#email_error_message").hide();  
+                            }
+                            else{
+                                $("#email_error_message").html("Invalid Email");
+                                $("#email_error_message").show(); 
+                                error_email = true;
+                            }
+                               }  
+
+
+
+
+
+
+    
+   </script>
+
+
+</body>
+</html>

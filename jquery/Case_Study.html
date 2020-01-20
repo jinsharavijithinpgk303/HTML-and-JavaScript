@@ -1,0 +1,308 @@
+<html>
+    <head>
+         <script src="js/jquery-1.11.0.js">
+    </script>
+    <title> account creation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <script src="js/jquery-1.11.0.js"></script>
+ </head>
+    <style>
+        body{
+            background-color: mediumspringgreen;
+        }
+        #user{
+            color: blue;
+            font-size:30px ;
+            margin-top:100px ;
+            margin-left:550px ;
+        }
+        #form_fname{
+        width: 200px;
+            height: 40px;
+            border: none;
+            border-bottom: 1px  solid rgb(243, 11, 11);
+            padding: 6px;
+            margin-bottom: 15px;
+            color: solid snow;
+            background: transparent;
+            }
+            #form_sname{
+                
+        width: 200px;
+            height: 40px;
+            border: none;
+            border-bottom: 1px  solid rgb(243, 11, 11);
+            padding: 6px;
+            margin-bottom: 15px;
+            color: solid snow;
+            background: transparent;
+
+            }
+            #form_email{
+
+                height: 40px;
+            border: none;
+            border-bottom: 1px  solid rgb(243, 11, 11);
+            padding: 6px;
+            margin-bottom: 15px;
+            color: solid snow;
+            background: transparent;
+            }
+            #form_password{
+                height: 40px;
+            border: none;
+            border-bottom: 1px  solid rgb(243, 11, 11);
+            padding: 6px;
+            margin-bottom: 15px;
+            color: solid snow;
+            background: transparent;
+             }
+             #form_retype{
+
+             height: 40px;
+            border: none;
+            border-bottom: 1px  solid rgb(113, 196, 5);
+            padding: 6px;
+            margin-bottom: 15px;
+            color: solid snow;
+            background: transparent;
+            }
+            #btn1{
+                color: white;
+                background-color:blue
+            }
+            #btn2{
+         
+                color: white;
+                background-color:blue
+
+            }
+            .container{
+                margin-left: 500px;
+                margin-top:100px ;
+            }
+            .top{
+                background-color: white;
+                width:900px;
+                height:500px ;
+                margin-left:70px ;
+            }
+            .container form div{
+                position:relative;
+            }
+            .container form div label{
+                position:absolute;
+                top:3px;
+                pointer-events: none;
+                left:0;
+                transition:5s ;
+            }
+            .container input:focus~label,
+            .container input:valid~label
+            {
+                left:0;
+                top:-20px;
+                color:blue;
+                font-size:12px;
+                font-weight:bold;
+                text-align:center;
+                 }
+    </style>
+<script>
+$(function() {
+    $("#fname_error_message").hide();
+    $("#sname_error_message").hide();
+    $("#password_error_message").hide();
+    $("#retype_password_error_message").hide();
+    $("#email_error_message").hide();
+    var error_fname = false;
+    var error_sname = false;
+    var error_password = false;
+    var error_retype_password = false;
+    var error_email = false;
+
+    $("#form_fname").focusout(function() {
+        check_fname();
+
+    });
+
+
+    function check_fname() {
+
+        var fname_length = $("#form_fname").val().length;
+
+        if (fname_length < 5 || fname_length > 20) {
+            $("#fname_error_message").html("Should be between 5-20 characters");
+            $("#fname_error_message").show();
+            error_fname = true;
+        } else {
+            $("#fname_error_message").hide();
+        }
+
+    }
+
+    $("#form_sname").focusout(function() {
+        check_sname();
+
+    });
+
+
+    function check_sname() {
+
+        var sname_length = $("#form_sname").val().length;
+
+        if (sname_length < 5 || sname_length > 20) {
+            $("#sname_error_message").html("Should be between 5-20 characters");
+            $("#sname_error_message").show();
+            error_fname = true;
+        } else {
+            $("#sname_error_message").hide();
+        }
+
+    }
+
+
+ $("#form_email").focusout(function() {
+        check_email();
+
+    });
+});
+
+function check_email() {
+    var pattern = new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
+
+    if (pattern.test($("#form_email").val())) {
+
+        $("#email_error_message").hide();
+
+    } else {
+
+
+        $("#email_error_message").html("Invalid Email id");
+        $("#email_error_message").show();
+        error_email = true;
+
+    }
+}
+
+
+    $("#form_password").focusout(function() {
+        check_password();
+
+    });
+
+
+    function check_password() {
+
+        var password_length = $("#form_password").val().length;
+
+        if (password_length < 3) {
+            $("#password_error_message").html("Should be more than 8 characters");
+            $("#password_error_message").show();
+            error_password = true;
+        } else {
+            $("#password_error_message").hide();
+        }
+
+    }
+
+
+
+    $("#form_retype").focusout(function() {
+        check_retype();
+
+    });
+
+
+
+    function check_retype() {
+
+        var password1 = $("#form_password").val();
+        var password2 = $("#form_retype").val();
+
+        if (password1 != password2) {
+            $("#retype_password_error_message").html("Password Missmatch");
+            $("#retype_password_error_message").show();
+            error_retype = true;
+        } else {
+            $("#retype_password_error_message").hide();
+        }
+
+    }
+   
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <body>
+        <div class="top">
+       <div class="header" >
+           <h1 id=user>REGISTER</h1> </div>
+<div class="container ">
+    <form>
+    <div class="text1">
+       <label ><i class="fa fa-user" aria-hidden="true"></i>First Name   </label>
+
+       <input type="text" class="form_text" id="form_fname">
+      <span class="error_form" id="fname_error_message"></span>
+       </div>
+<div class="text2">
+    <label ><i class="fa fa-user" aria-hidden="true"></i>Second Name </label>
+    <input type="text"  class="form_text"id="form_sname">
+    <span class="error_form" id="sname_error_message"></span>
+
+</div>
+<div class="text3">
+    <label ><i class="fa fa-envelope-o" aria-hidden="true"></i> Email id </label>
+    <input type="text" class="form_text" id="form_email">
+    <span class="error_form" id="email_error_message"></span>
+
+    </div>
+    <div class="password">
+        <lable>Password</lable>
+
+        <input type="password"class="form_text" id="form_password"><i class="fa fa-lock" aria-hidden="true"></i>
+        <span class="error_form" id="password_error_message"></span>
+
+    </div>
+    <div clas=="repassword">
+        <lable>Re-Enter Password</lable>
+        <input type="text"  class="form_text" id="form_retype"><i class="fa fa-lock" aria-hidden="true"></i>
+        <span class="error_form" id="retype_password_error_message"></span>
+
+       </div>
+<div class="button">
+    <button id="btn1">Register</button>  <button id="btn2">Reset</button> 
+
+</div>
+</div>
+</form>
+ </body>
+</html>
