@@ -1,0 +1,31 @@
+.container{
+    margin-top: 600px;
+    margin-left:400px ;
+    
+}
+.main{
+    width:50% ;
+    height:20% ;
+   margin-top: -700px;
+    margin-left:-300px ;
+}
+.watch{
+    margin-top: 300px;
+    margin-left: 500px;
+}
+.music{
+    margin-top: 20px;
+    margin-left:100px ;
+}
+.mm{
+    margin-left:500px ;
+    margin-top:-500px ;
+}
+.uu{
+    margin-left:680px ;
+    margin-top:-20px ;
+}
+.play{
+    margin-top:-20px ;
+    margin-left: 600px;
+}
