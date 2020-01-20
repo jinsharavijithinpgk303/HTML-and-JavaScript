@@ -1,0 +1,144 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <style>
+ * {
+      box-sizing: border-box;
+    }
+    .column {
+      float: left;
+      width: 45%;
+      padding: 10px;
+      height: 500px; /* Should be removed. Only for demonstration */
+      margin-top:100px ;
+ 
+
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .main{
+        margin-top:170px ;
+    }
+    .head{
+        margin-left:300px ;
+    }
+    #cc{
+        color: white;
+    }
+    .wa{
+        margin-top:100px ;
+        margin-left:100px ;
+    }
+    
+   
+    </style>
+    <body>
+        <div class="head">
+        <div class="row">
+          <div class="column" style="background-color :blue;">
+            <div class="wa">
+            <h2 id="cc">Weather <span></span>App</h2>
+            <p id="cc">Build a simple UI that shows the weather of a city that is<br> entered by the user.Use HTML,CSS and Javascript to<br>achieve this.</p>
+          
+            <p id="cc">
+                Requirements:
+            </p>
+            <p id="cc">
+                1)Current dte and time<br>
+                2)Weather<br>
+                3)Temperature
+            </p>
+        </div>
+          </div>
+          <div class="column" style="background-color:#aaa;">
+            <div class="main">
+                <p id="show"></p>
+                <p id="show1"></p>
+                <p id="cloud"></p>
+                <p id="citylabel"></p>
+            
+
+           <label>
+               Enter The City Name
+           </label>
+           <input type="text" placeholder="City,State" id="txt1">
+          
+         
+           <input type="submit" value="Weather" id="btn">
+        </div>
+          </div>
+        </div>
+
+</div>
+</div>
+<script>
+
+$(document).ready(function()
+        {
+            $("#btn").click(weather);
+            function weather()
+            {
+                var d = new Date();
+                document.getElementById("show1").innerHTML=d;
+                var text=$("#txt1").val();
+                $.ajax({
+                    url:"http://api.openweathermap.org/data/2.5/weather?q="+text+"&units=metric"+"&APPID=4a46e146e9f309dffad77471e3dd00ee",
+                    type:"GET",
+                    datatype:"jsonp",
+                    success:function(data)
+                    {
+                        console.log(data);
+                        document.getElementById("show").innerHTML=data.main.temp+" &#8451;";
+                        document.getElementById("cloud").innerHTML= data.weather[0].description;
+                        document.getElementById("citylabel").innerHTML= data.name +" ,"+data.sys.country;
+                        var icon="http://openweathermap.org/img/w/" +data.weather[0].icon+".png";
+                        document.getElementById("icon").src=icon;
+                        time();
+                    },
+                    error:function(val){
+                        document.getElementById("show").innerHTML="city not found"
+                    }
+                    
+                });
+            }
+        });
+        function time() {                //time function
+  var today = new Date();     //time object
+  var weekday = new Array(7);                     // to get day
+  weekday[0] = "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+  var n = weekday[today.getDay()];
+  var h = today.getHours();        //hour
+  var m = today.getMinutes();      //minutes
+  var s = today.getSeconds();      //sec
+  var z = today.getDay();
+  var x = today.getMonth();
+  var y = today.getFullYear();
+  m = checkTime(m);        //to add zero when value is below 10
+  s = checkTime(s);        //          ""
+  document.getElementById("dayandtime").innerHTML = n + " , " + h + ":" + m + ":" + s;   //time and day
+  var t = setTimeout(time, 500);
+}  // 
+function checkTime(i) {      //to add zero when value is below 10 
+  if (i < 10) { i = "0" + i };
+  return i;
+}
+
+
+</script>
+    </body>
+</html>
+
