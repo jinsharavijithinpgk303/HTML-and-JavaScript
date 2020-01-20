@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>passing value</title>
+</head>
+<body>
+    Number1: <input type="text" id="n1"><br>
+    Number2: <input type="text" id="n2"><br>
+    <input type="button" onclick="take(n1.value,n2.value)" value="Submit">
+    <script type="text/javascript">
+    function take(n1,n2)
+    {
+        num1=parseInt(n1);
+        num2=parseInt(n2);
+        var ans=num1+num2;
+        document.write("<h3> num1 : "+num1+"</h3>");
+        document.write("<h3> num2 : "+num2+"</h3>");
+        document.write("<h3> anwser : "+ans+"</h3>");
+    }
+    </script>
+</body>
+</html>

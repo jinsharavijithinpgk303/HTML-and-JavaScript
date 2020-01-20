@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Student</title>
+        <script>
+        function details()
+        {
+            var fname=document.getElementById("fname").value;
+            var roll=document.getElementById("roll").value;
+            var mail=document.getElementById("mail").value.indexOf("@");
+            var pass=document.getElementById("pass").value;
+            var con=document.getElementById("con").value;
+            submitOK="true";
+           if(fname.length>10)
+           {
+               alert("max length 10");
+               submitOK="false";
+           }
+            if(isNaN(roll) || roll < 1)
+            {
+                alert("Empty field/invalid rollno");
+                submitOK="false";
+            }
+            if(mail==-1)
+            {
+                alert("invalid mail");
+                submitOK="false";
+            }
+            if(submitOK == "false")
+            {
+                return false;
+            }
+            
+        }
+        </script>
+    </head>
+    <body>
+        <form action="https://github.com" onsubmit="return details()">
+            <h3>Student</h3><br>
+            <h5>Name : </h5>&nbsp;<input type="text" id="fname" size="20">
+            <h5>RollNo : </h5>&nbsp;<input type="text" id="roll">
+            <h5>Email : </h5>&nbsp;<input type="text" id="mail">
+            <h5>Password : </h5>&nbsp;<input type="text" id="pass">
+            <h5>Confirm Password : </h5>&nbsp;<input type="text" id="con">
+            <br>
+            <input type="submit" value="Register">
+            </form>  
+    </body>
+</html>

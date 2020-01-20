@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title>CaseStudy 2</title>
+        <style type="text/css">
+        .con{
+            margin-top: 250px;
+            margin-left: 450px;
+        }
+        </style>
+    </head>
+    <body>
+
+<div>
+    <table id="ta">
+       
+    </table>
+</div>
+
+        <div>
+                <table id="table">
+                <tr>
+                    <th>Name</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="con">
+            <font>Name</font>&nbsp;<input type="text" id="fname">
+            <input type="button" value="Add" onclick="add()">
+        </div>
+
+        <script type="text/javascript">
+         var rIndex,
+            table=document.getElementById("table");
+
+          function checkEmpty()
+           {
+               var isEmpty=false,
+               fname=document.getElementById("fname").value;
+               if(fname==="")
+               {
+                   alert("First name cannot be empty");
+                   isEmpty=true;
+               }
+               return isEmpty;
+            }
+        function add()
+        {
+            if(!checkEmpty())
+            {
+                var newRow=table.insertRow(table.length),
+                cell1=newRow.insertCell(0),
+                cell2=newRow.insertCell(1),
+                cell3=newRow.insertCell(2),
+                fname=document.getElementById("fname").value;
+
+                    cell1.innerHTML=fname;
+                    cell2.innerHTML="<button id='btnedit' onclick='editor()';>Edit</button>";
+                    cell3.innerHTML="<button id='btndel';>Delete</button>";
+
+            }
+        }
+ 
+           
+        function editor()
+        {
+
+            var newRow=ta.insertRow(ta.length),
+            cell1=newRow.insertCell(0),
+            cell2=newRow.insertCell(1);
+
+            cell1.innerHTML="<input type='text'; id='name1';>";
+            cell2.innerHTML="<button id='btndel'; onclick=edit();>Editor</button>";
+
+            for(var i=1;i<table.rows.length;i++)
+                {
+                    table.rows[i].onclick=function(){
+                         
+                        //get selected row
+
+                        rIndex=this.rowIndex;
+                        document.getElementById("name1").value = this.cells[0].innerHTML;
+                    };
+                }
+        }
+
+        function edit()
+        {
+            var newRow=table.insertRow(table.length),
+            cell1=newRow.insertCell(0),
+            name1=document.getElementById("name1").value;
+            table.rows[rIndex].cells[0].innerHTML=name1;
+        }
+
+        </script>
+    </body>
+</html>

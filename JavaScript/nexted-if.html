@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Nexted-If</title>
+        <script>
+            var n1=prompt("first number");
+            var n2=prompt("second number");
+            var n3=prompt("third number");
+            n1=parseInt(n1);
+            n2=parseInt(n2);
+            n3=parseInt(n3);
+            if(n1!=n2)
+            {
+                if(n1!=n3)
+                {
+                    document.write(n1+n3);
+                }
+                else
+                {
+                    document.write(n1+n2);
+                }
+            }
+            else
+            {
+                document.write("numbers are same");
+            }
+        </script>
+    </head>
+</html>

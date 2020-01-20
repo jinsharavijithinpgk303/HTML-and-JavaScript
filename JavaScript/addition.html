@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>addition</title>
+        <script type="text/javascript">
+        var n1=prompt("first number");
+        n1=parseInt(n1);
+        var n2=prompt("second number");
+        n2=parseInt(n2);
+        function add()
+        {
+            var ans=n1+n2;
+            document.write("addition is = "+ans);
+        }
+        function sub()
+        {
+            var ans=n1-n2;
+            document.write("sub is = "+ans);
+        }
+        function mul()
+        {
+            var ans=n1*n2;
+            document.write("mul is = "+ans);
+        }
+        function div()
+        {
+            var ans=n1/n2;
+            document.write("div is = "+ans);
+        }
+        </script>
+    </head>
+    <body>
+        <input type="button" onclick="add()" value="Add"><br>
+        <input type="button" onclick="sub()" value="Sub"><br>
+        <input type="button" onclick="mul()" value="Mul"><br>
+        <input type="button" onclick="div()" value="Div">
+    </body>
+</html>
