@@ -1,0 +1,26 @@
+{
+    "events":[
+        {
+            "NAME": "Jinsha Ravi",
+            "College ": "Federal Institute Of Science and Technology",
+            "Qualification": "B.Tech",
+            "Department": "ECE",
+            "map": "ann.jpg"
+        },
+        {
+            "NAME": "Ann Dona James",
+            "College ": " Amal Jyothy College",
+            "Qualification": "MCA",
+            "Department": "MCA",
+            "map": "ann.jpg"
+
+        },
+        {
+            "NAME": " ANNA",
+            "College ": "Malabar College of Enginnering and Technology",
+            "Qualification": "B.Tech",
+            "Department": "CSE",
+           "map" : "ann.jpg"
+        }
+    ]
+}
